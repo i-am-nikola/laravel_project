@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
+});
+
+Route::prefix('admin')->group(function () {
+  Route::prefix('category')->group(function () {
+    Route::get('list', 'CategoryController@getList')->name('admin.cate.getList');
+    Route::get('add', 'CategoryController@getAdd')->name('admin.cate.getAdd');
+    Route::post('add', 'CategoryController@postAdd')->name('admin.cate.postAdd');
+    Route::get('delete/{id}', 'CategoryController@getDelete')->name('admin.cate.getDelete');
+    Route::get('edit/{id}', 'CategoryController@getEdit')->name('admin.cate.getEdit');
+    Route::put('edit/{id}', 'CategoryController@postEdit')->name('admin.cate.postEdit');
+  });
 });
