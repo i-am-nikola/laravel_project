@@ -22,6 +22,11 @@ Route::prefix('admin')->group(function () {
     Route::post('add', 'CategoryController@postAdd')->name('admin.cate.postAdd');
     Route::get('delete/{id}', 'CategoryController@getDelete')->name('admin.cate.getDelete');
     Route::get('edit/{id}', 'CategoryController@getEdit')->name('admin.cate.getEdit');
-    Route::put('edit/{id}', 'CategoryController@postEdit')->name('admin.cate.postEdit');
+    Route::post('edit/{id}', 'CategoryController@postEdit')->name('admin.cate.postEdit');
+  });
+
+  Route::prefix('product')->group(function () {
+    Route::get('add', 'ProductController@getAdd')->name('admin.product.getAdd');
+    Route::post('add', 'ProductController@postAdd')->name('admin.product.postAdd');
   });
 });

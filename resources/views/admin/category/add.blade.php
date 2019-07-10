@@ -2,16 +2,7 @@
 @extends('admin.master')
 @section('content')
   <div class="col-lg-7" style="padding-bottom:120px">
-    @if (count($errors))  
-      <div class="alert alert-danger">
-        <ul>
-          @foreach ($errors->all() as $error)
-            <li>{!! $error !!}</li>
-          @endforeach
-        </ul>
-      </div>
-    @endif
-    
+    @include('admin.blocks.error')
     <form action="{!! route('admin.cate.getAdd') !!}" method="POST">
       <input type="hidden" name="_token" value="{!! csrf_token() !!}">
       <div class="form-group">

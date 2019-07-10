@@ -49,13 +49,28 @@ class CategoryController extends Controller
 		
 	}
 
-	public function getEdit()
+	public function getEdit($id)
 	{
-		
+		$data = Category::findOrFail($id)->toArray();
+		$parent = Category::select('id', 'name', 'parent_id')->get()->toArray();
+		return view('admin.category.edit', compact('parent', 'data', 'id'));
 	}
 
-	public function postEdit()
+	public function postEdit(Request $request, $id)
 	{
-		
+		$this->Validate($request,
+			['name' => 'required'],
+			['name.required' => 'Please enter name category']
+		);
+		$category = Category::find($id);
+		$category->name 				= $request->name;
+		$category->alias 				= convertToEn($request->name);
+		$category->order 				= $request->order;
+		$category->parent_id 		= $request->parent_id;
+		$category->keyword 			= $request->keyword;
+		$category->description 	= $request->description;
+		$category->save();
+		return redirect()->route('admin.cate.getList')
+										 ->with(['flash_message' => 'Success! Complete edit category','flash_level' => 'success']);
 	}
 }

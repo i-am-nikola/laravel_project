@@ -13,3 +13,8 @@ function deleteWarning($message){
     return false;
   }
 }
+
+$(document).ready(function() {
+  CKEDITOR.replace( 'intro' );
+  CKEDITOR.replace( 'content' );
+});

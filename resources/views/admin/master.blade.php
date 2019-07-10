@@ -26,6 +26,8 @@
 
 	<!-- DataTables Responsive CSS -->
 	<link href="{{ url('admin/bower_components/datatables-responsive/css/dataTables.responsive.css') }}" rel="stylesheet">
+	
+
 </head>
 
 <body>
@@ -173,6 +175,9 @@
 	{{-- Common --}}
 	<script src="{{ url('admin/js/common.js') }}"></script>
 
+	{{-- Ckediter --}}
+	<script src="{{ url('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+	
 </body>
 
 </html>
